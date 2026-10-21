@@ -2,10 +2,11 @@
 
 Use Cuddler video, image, speech, and music capabilities in Dify workflows. This plugin provides model discovery, cost estimates, signed operation plans, task recovery, native output files, and cancellation of supported queued tasks.
 
-- Version: **0.3.6**
+- Version: **0.3.7**
 - Author namespace: `cuddler-ai`
 - Source repository: https://github.com/CuddlerAI/dify-cuddler
-- Support/contact: https://github.com/CuddlerAI/dify-cuddler/issues
+- Support/contact: support@cuddler.ai
+- Issue tracker: https://github.com/CuddlerAI/dify-cuddler/issues
 - API: https://api.cuddler.ai
 - Privacy: [PRIVACY.md](PRIVACY.md)
 - License: [MIT](LICENSE); Cuddler names and artwork remain trademarks of their owners.
@@ -53,7 +54,7 @@ Only native source URLs on `cloud.dify.ai/files/` and `upload.dify.ai/files/` ar
 
 ## Release status and limitations
 
-The runtime in this release matches the 0.3.6 Dify Cloud candidate. Release preparation updates documentation only. Dify Cloud installation, read-only model/estimate workflows, native image/audio/video source uploads, independent operation recovery, credential/request/budget/source-change rejection, and successful video/music native output delivery have real Cloud evidence. Existing image/speech tasks were also delivered as native files; they were not newly generated in that run.
+The executable Python runtime in 0.3.7 is byte-identical to 0.3.6 and its Dify Cloud candidate. This release updates the package version, required repository/contact metadata, and related documentation to address Marketplace pre-check feedback. It adds no Cloud acceptance runs. Dify Cloud installation, read-only model/estimate workflows, native image/audio/video source uploads, independent operation recovery, credential/request/budget/source-change rejection, and successful video/music native output delivery have real Cloud evidence. Existing image/speech tasks were also delivered as native files; they were not newly generated in that run.
 
 The maintainer elected to release this candidate without further acceptance runs. Real queued cancellation was not established: the test target had already completed and returned `not_cancelable`. First-response-loss and expired-link fault handling have automated synthetic/isolated coverage, not production Cloud fault-injection evidence. No event/webhook receiver is implemented; recovery uses polling. Do not interpret a host workflow's `SUCCESS` status as proof that an individual tool's business result succeeded; inspect its error/status fields.
 

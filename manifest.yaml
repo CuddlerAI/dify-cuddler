@@ -1,7 +1,9 @@
-version: 0.3.6
+version: 0.3.7
 type: plugin
 author: cuddler-ai
 name: cuddler_recovery
+repo: https://github.com/CuddlerAI/dify-cuddler
+contact: support@cuddler.ai
 label:
   en_US: Cuddler recovery candidate
   zh_Hans: Cuddler 恢复候选
