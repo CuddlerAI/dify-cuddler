@@ -1,0 +1,15 @@
+identity:
+  author: cuddler-ai
+  name: list_models
+  label:
+    en_US: List models
+    zh_Hans: 查询模型
+description:
+  human:
+    en_US: List available Platform models. Does not generate media.
+    zh_Hans: 查询 Platform 模型，不创建任务。
+  llm: List available Platform models. Does not generate media.
+parameters: []
+extra:
+  python:
+    source: tools/list_models.py

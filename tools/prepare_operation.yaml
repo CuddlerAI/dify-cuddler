@@ -1,0 +1,118 @@
+identity:
+  author: cuddler-ai
+  name: prepare_operation
+  label:
+    en_US: Prepare durable operation
+    zh_Hans: 准备持久化操作
+description:
+  human:
+    en_US: Prepare the explicit stable batch/item through Platform atomic storage,
+      verify signed readback, and bind native source files. Does not generate.
+    zh_Hans: 通过后端原子存储准备稳定批次/条目，验证签名读回并绑定原生文件；不启动生成。
+  llm: Prepare the explicit stable batch/item through Platform atomic storage, verify
+    signed readback, and bind native source files. Does not generate.
+parameters:
+- name: media
+  type: select
+  label:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  human_description:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  llm_description: Media type
+  form: llm
+  required: true
+  options:
+  - value: video
+    label:
+      en_US: video
+      zh_Hans: 视频
+  - value: image
+    label:
+      en_US: image
+      zh_Hans: 图片
+  - value: speech
+    label:
+      en_US: speech
+      zh_Hans: 语音
+  - value: music
+    label:
+      en_US: music
+      zh_Hans: 音乐
+- name: request_json
+  type: string
+  label:
+    en_US: Exact generation JSON (max 64 KiB)
+    zh_Hans: 原始生成请求 JSON，最多 64 KiB
+  human_description:
+    en_US: Exact generation JSON (max 64 KiB)
+    zh_Hans: 原始生成请求 JSON，最多 64 KiB
+  llm_description: Exact generation JSON (max 64 KiB)
+  form: llm
+  required: true
+- name: logical_node
+  type: string
+  label:
+    en_US: Stable logical node (not execution ID)
+    zh_Hans: 稳定逻辑节点标识，不使用执行 ID
+  human_description:
+    en_US: Stable logical node (not execution ID)
+    zh_Hans: 稳定逻辑节点标识，不使用执行 ID
+  llm_description: Stable logical node (not execution ID)
+  form: llm
+  required: true
+- name: operation_batch
+  type: string
+  label:
+    en_US: Explicit operation batch; reuse for retries
+    zh_Hans: 明确的操作批次；重试沿用原批次
+  human_description:
+    en_US: Explicit operation batch; reuse for retries
+    zh_Hans: 明确的操作批次；重试沿用原批次
+  llm_description: Explicit operation batch; reuse for retries
+  form: llm
+  required: true
+- name: item_id
+  type: string
+  label:
+    en_US: Stable business item ID; not list position
+    zh_Hans: 稳定业务条目标识，不使用列表位置
+  human_description:
+    en_US: Stable business item ID; not list position
+    zh_Hans: 稳定业务条目标识，不使用列表位置
+  llm_description: Stable business item ID; not list position
+  form: llm
+  required: true
+- name: files
+  type: files
+  label:
+    en_US: Native Dify source files
+    zh_Hans: 原生 Dify 源文件
+  human_description:
+    en_US: Native Dify source files
+    zh_Hans: 原生 Dify 源文件
+  llm_description: Native Dify source files
+  form: llm
+  required: false
+- name: file_bindings_json
+  type: string
+  label:
+    en_US: 'Ordered bindings: source_id, source_version, kind'
+    zh_Hans: 按文件顺序绑定：source_id、source_version、kind
+  human_description:
+    en_US: 'Ordered bindings: source_id, source_version, kind'
+    zh_Hans: 按文件顺序绑定：source_id、source_version、kind
+  llm_description: 'Ordered bindings: source_id, source_version, kind'
+  form: llm
+  required: false
+extra:
+  python:
+    source: tools/prepare_operation.py
+output_schema:
+  type: object
+  properties:
+    operation_id:
+      type: string
+    operation_ref:
+      type: string

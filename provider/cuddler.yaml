@@ -1,0 +1,36 @@
+identity:
+  author: cuddler-ai
+  name: cuddler_recovery
+  label:
+    en_US: Cuddler recovery candidate
+    zh_Hans: Cuddler 恢复候选
+  description:
+    en_US: Use Cuddler video, image, speech and music capabilities in Dify workflows,
+      with cost estimates and job queries.
+    zh_Hans: 在 Dify 工作流中使用 Cuddler 视频、图片、语音和音乐能力，支持费用预估与任务查询。
+  icon: icon.png
+  tags:
+  - videos
+  - image
+  - utilities
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: Platform API key
+      zh_Hans: Platform API 密钥
+    help:
+      en_US: Use an existing Platform key. Credential validation reads /v1/balance
+        without creating a job.
+      zh_Hans: 使用已有 Platform 密钥，校验只读 /v1/balance，不创建任务。
+tools:
+- tools/list_models.yaml
+- tools/estimate.yaml
+- tools/prepare_operation.yaml
+- tools/execute_operation.yaml
+- tools/get_job.yaml
+- tools/cancel_job.yaml
+extra:
+  python:
+    source: provider/cuddler.py

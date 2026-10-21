@@ -1,0 +1,72 @@
+identity:
+  author: cuddler-ai
+  name: get_job
+  label:
+    en_US: Get original job and file
+    zh_Hans: 查询原任务并交付文件
+description:
+  human:
+    en_US: Read an existing Platform job. Optional download returns a Dify file blob,
+      at most 16 MiB. Never creates a job.
+    zh_Hans: 查询已有 Platform 任务；可选下载返回 Dify 文件，最多 16 MiB，不创建任务。
+  llm: Read an existing Platform job. Optional download returns a Dify file blob,
+    at most 16 MiB. Never creates a job.
+parameters:
+- name: media
+  type: select
+  label:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  human_description:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  llm_description: Media type
+  form: llm
+  required: true
+  options:
+  - value: video
+    label:
+      en_US: video
+      zh_Hans: 视频
+  - value: image
+    label:
+      en_US: image
+      zh_Hans: 图片
+  - value: speech
+    label:
+      en_US: speech
+      zh_Hans: 语音
+  - value: music
+    label:
+      en_US: music
+      zh_Hans: 音乐
+- name: job_id
+  type: string
+  label:
+    en_US: Original Platform job ID
+    zh_Hans: 原 Platform 任务 ID
+  human_description:
+    en_US: Original Platform job ID
+    zh_Hans: 原 Platform 任务 ID
+  llm_description: Original Platform job ID
+  form: llm
+  required: true
+- name: download
+  type: boolean
+  label:
+    en_US: Download the output file
+    zh_Hans: 下载结果文件
+  human_description:
+    en_US: Download the output file
+    zh_Hans: 下载结果文件
+  llm_description: Download the output file
+  form: llm
+  default: false
+extra:
+  python:
+    source: tools/get_job.py
+output_schema:
+  type: object
+  properties:
+    job_id:
+      type: string

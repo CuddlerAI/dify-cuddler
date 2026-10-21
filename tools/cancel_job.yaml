@@ -1,0 +1,56 @@
+identity:
+  author: cuddler-ai
+  name: cancel_job
+  label:
+    en_US: Cancel queued job
+    zh_Hans: 取消排队任务
+description:
+  human:
+    en_US: Cancel an existing queued video, speech or music job. Images are unsupported.
+      Does not create a job.
+    zh_Hans: 取消已有的排队视频、语音或音乐任务；图片不支持，不创建任务。
+  llm: Cancel an existing queued video, speech or music job. Images are unsupported.
+    Does not create a job.
+parameters:
+- name: media
+  type: select
+  label:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  human_description:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  llm_description: Media type
+  form: llm
+  required: true
+  options:
+  - value: video
+    label:
+      en_US: video
+      zh_Hans: 视频
+  - value: image
+    label:
+      en_US: image
+      zh_Hans: 图片
+  - value: speech
+    label:
+      en_US: speech
+      zh_Hans: 语音
+  - value: music
+    label:
+      en_US: music
+      zh_Hans: 音乐
+- name: job_id
+  type: string
+  label:
+    en_US: Original Platform job ID
+    zh_Hans: 原 Platform 任务 ID
+  human_description:
+    en_US: Original Platform job ID
+    zh_Hans: 原 Platform 任务 ID
+  llm_description: Original Platform job ID
+  form: llm
+  required: true
+extra:
+  python:
+    source: tools/cancel_job.py

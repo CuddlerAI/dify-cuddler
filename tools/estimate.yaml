@@ -1,0 +1,56 @@
+identity:
+  author: cuddler-ai
+  name: estimate
+  label:
+    en_US: Estimate cost
+    zh_Hans: 费用预估
+description:
+  human:
+    en_US: Free Platform estimate only. request_json is sent to Platform; this does
+      not create a generation job.
+    zh_Hans: 仅免费报价；请求会发送给 Platform，不创建生成任务。
+  llm: Free Platform estimate only. request_json is sent to Platform; this does not
+    create a generation job.
+parameters:
+- name: media
+  type: select
+  label:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  human_description:
+    en_US: Media type
+    zh_Hans: 媒体类型
+  llm_description: Media type
+  form: llm
+  required: true
+  options:
+  - value: video
+    label:
+      en_US: video
+      zh_Hans: 视频
+  - value: image
+    label:
+      en_US: image
+      zh_Hans: 图片
+  - value: speech
+    label:
+      en_US: speech
+      zh_Hans: 语音
+  - value: music
+    label:
+      en_US: music
+      zh_Hans: 音乐
+- name: request_json
+  type: string
+  label:
+    en_US: Platform estimate request JSON (object, max 64 KiB)
+    zh_Hans: Platform 报价请求 JSON 对象，最多 64 KiB
+  human_description:
+    en_US: Platform estimate request JSON (object, max 64 KiB)
+    zh_Hans: Platform 报价请求 JSON 对象，最多 64 KiB
+  llm_description: Platform estimate request JSON (object, max 64 KiB)
+  form: llm
+  required: true
+extra:
+  python:
+    source: tools/estimate.py

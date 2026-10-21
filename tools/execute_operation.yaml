@@ -1,0 +1,47 @@
+identity:
+  author: cuddler-ai
+  name: execute_operation
+  label:
+    en_US: Execute original durable operation
+    zh_Hans: 执行原持久化操作
+description:
+  human:
+    en_US: Verify the original signed backend readback and execute the same operation.
+      A known job is queried only; never invent a new batch or key.
+    zh_Hans: 核验原操作后端签名读回并执行同一操作；已知任务仅查询，不另造批次或幂等键。
+  llm: Verify the original signed backend readback and execute the same operation.
+    A known job is queried only; never invent a new batch or key.
+parameters:
+- name: operation_ref
+  type: string
+  label:
+    en_US: Original operation_ref from prepare
+    zh_Hans: 准备步骤输出的原 operation_ref
+  human_description:
+    en_US: Original operation_ref from prepare
+    zh_Hans: 准备步骤输出的原 operation_ref
+  llm_description: Original operation_ref from prepare
+  form: llm
+  required: true
+- name: download
+  type: boolean
+  label:
+    en_US: Deliver successful output as blob
+    zh_Hans: 将成功结果作为文件交付
+  human_description:
+    en_US: Deliver successful output as blob
+    zh_Hans: 将成功结果作为文件交付
+  llm_description: Deliver successful output as blob
+  form: llm
+  required: false
+  default: false
+extra:
+  python:
+    source: tools/execute_operation.py
+output_schema:
+  type: object
+  properties:
+    job_id:
+      type: string
+    operation_ref:
+      type: string
