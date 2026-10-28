@@ -1,12 +1,12 @@
-version: 0.3.7
+version: 0.3.8
 type: plugin
 author: cuddler-ai
 name: cuddler_recovery
 repo: https://github.com/CuddlerAI/dify-cuddler
 contact: support@cuddler.ai
 label:
-  en_US: Cuddler recovery candidate
-  zh_Hans: Cuddler 恢复候选
+  en_US: Cuddler
+  zh_Hans: Cuddler
 description:
   en_US: Use Cuddler video, image, speech and music capabilities in Dify workflows,
     with cost estimates and job queries.
