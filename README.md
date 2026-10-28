@@ -2,7 +2,7 @@
 
 Use Cuddler video, image, speech, and music capabilities in Dify workflows. This plugin provides model discovery, cost estimates, signed operation plans, task recovery, native output files, and cancellation of supported queued tasks.
 
-- Version: **0.3.7**
+- Version: **0.3.8**
 - Author namespace: `cuddler-ai`
 - Source repository: https://github.com/CuddlerAI/dify-cuddler
 - Support/contact: support@cuddler.ai
@@ -13,7 +13,7 @@ Use Cuddler video, image, speech, and music capabilities in Dify workflows. This
 
 ## Install and configure
 
-Install the `.difypkg` from this repository's GitHub Releases using Dify's plugin installation dialog. Marketplace installation becomes available only after the Marketplace review is approved.
+Install Cuddler from [Dify Marketplace](https://marketplace.dify.ai/plugin/cuddler-ai/cuddler_recovery), or install the `.difypkg` from this repository's GitHub Releases using Dify's plugin installation dialog. Marketplace version updates become available after Dify approves and publishes them.
 
 Configure an existing Cuddler Platform API key in the plugin's credential form. Key validation performs a read-only balance request and does not create a generation task. A live key and sufficient organization balance are required for operation preparation and generation. Store the key only in Dify's credential form; do not place it in workflow outputs or prompts. The key may authorize spending against the organization balance; this plugin does not add a separate per-key spending limit.
 
@@ -54,7 +54,9 @@ Only native source URLs on `cloud.dify.ai/files/` and `upload.dify.ai/files/` ar
 
 ## Release status and limitations
 
-The executable Python runtime in 0.3.7 is byte-identical to 0.3.6 and its Dify Cloud candidate. This release updates the package version, required repository/contact metadata, and related documentation to address Marketplace pre-check feedback. It adds no Cloud acceptance runs. Dify Cloud installation, read-only model/estimate workflows, native image/audio/video source uploads, independent operation recovery, credential/request/budget/source-change rejection, and successful video/music native output delivery have real Cloud evidence. Existing image/speech tasks were also delivered as native files; they were not newly generated in that run.
+Version 0.3.8 changes the English and Simplified Chinese plugin/provider display names to **Cuddler**. The existing plugin identifier `cuddler-ai/cuddler_recovery` is unchanged, preserving the Marketplace listing and existing workflow references. All executable Python, tool definitions, dependencies, privacy policy, and artwork are byte-identical to 0.3.7. This metadata update adds no Cloud acceptance runs.
+
+The executable Python runtime remains byte-identical to 0.3.6 and its Dify Cloud candidate. Dify Cloud installation, read-only model/estimate workflows, native image/audio/video source uploads, independent operation recovery, credential/request/budget/source-change rejection, and successful video/music native output delivery have real Cloud evidence. Existing image/speech tasks were also delivered as native files; they were not newly generated in that run.
 
 The maintainer elected to release this candidate without further acceptance runs. Real queued cancellation was not established: the test target had already completed and returned `not_cancelable`. First-response-loss and expired-link fault handling have automated synthetic/isolated coverage, not production Cloud fault-injection evidence. No event/webhook receiver is implemented; recovery uses polling. Do not interpret a host workflow's `SUCCESS` status as proof that an individual tool's business result succeeded; inspect its error/status fields.
 
